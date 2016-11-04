@@ -1,0 +1,15 @@
+button.rounded-button {
+  @include rounded-button();
+
+  &.dark {
+    @include rounded-button($accent-color-2, $text-light, $accent-color-2);
+    &:disabled {
+      @include rounded-button($accent-color-3, $text-light, $accent-color-3);
+      cursor: default;  
+    }
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}

@@ -1,0 +1,6 @@
+.home {
+  .info {
+    @include   centered(column);
+    padding  : 10px;
+  }
+}

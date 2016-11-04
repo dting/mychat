@@ -1,0 +1,53 @@
+.message-list {
+  display : flex;
+  flex    : 1;
+
+  .messages,
+  .scroll-wrapper {
+    transform : scale(1,-1);
+  }
+
+  .scroll-wrapper {
+    height     : 100%;
+    padding    : 0 10px;
+    overflow-y : auto;
+    flex       : 1;
+  }
+
+  .message {
+    display        : flex;
+    margin         : 5px 0;
+    flex-direction : column;
+
+    &__contents {
+      margin         : 10px 0;
+      vertical-align : bottom;
+      font-size      : 16px;
+      line-height    : 22px;
+      word-break     : break-all;
+    }
+
+    &_meta {
+      display         : flex;
+      align-items     : baseline;
+      justify-content : flex-end;
+
+      &__author {
+        @include   heading-font(14px, 700);
+        color    : $primary-color;
+        flex     : 1;
+      }
+
+      &__time {
+        @include   subheading-font(10px);
+        color    : $base16-04;
+      }
+
+      &__ago {
+        @include       subheading-font(10px);
+        margin-right : 10px;
+        color        : $base16-04;
+      }
+    }
+  }
+}

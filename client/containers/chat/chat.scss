@@ -1,0 +1,35 @@
+@import "./header/header",
+        "./message-list/message-list",
+        "./editor/editor";
+
+.chat {
+  display : flex;
+  flex    : 1;
+
+  &_main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &_contents {
+    display        : flex;
+    min-width      : 0;
+    flex           : 1;
+    flex-direction : column;
+
+    &__loading {
+      @include   gradient-bg($base16-07, $base16-06, $base16-05);
+      @include   centered(column);
+      flex     : 1;
+
+      .loading_status {
+        padding : 10px;
+      }
+    }
+  }
+  .draftJsEmojiPlugin__emoji__2oqBk {
+    vertical-align: inherit;
+    display: inline;
+  }
+}

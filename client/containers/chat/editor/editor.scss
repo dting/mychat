@@ -1,0 +1,42 @@
+.chat_editor {
+  display     : flex;
+  position    : relative;
+  padding     : 10px;
+  border-top  : 1px solid $border;
+  align-items : center;
+
+  .DraftEditor-root {
+    @include        no-outline();
+    display       : flex;
+    min-height    : 44px;
+    margin-right  : 10px;
+    border        : 2px solid $border;
+    border-radius : 10px;
+    font-size     : 16px;
+    flex          : 1;
+
+    .DraftEditor-editorContainer {
+      display     : flex;
+      min-height  : 32px;
+      align-items : center;
+      flex        : 1;
+    }
+
+    .public-DraftEditor-content {
+      max-height  : 132px;
+      padding     : 0 16px;
+      overflow-y  : auto;
+      flex        : 1;
+      line-height : 22px;
+      word-break  : break-all;
+    }
+  }
+
+  div[role=listbox] {
+    div[role=option] {
+      span {
+        max-width : 160px;
+      }
+    }
+  }
+}

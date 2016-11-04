@@ -1,0 +1,10 @@
+@import './room-list/room-list';
+@import './user-menu/user-menu';
+
+.side-bar {
+  display          : flex;
+  width            : $side-bar-width;
+  color            : $text-light;
+  background-color : $primary-color;
+  flex-direction   : column;
+}

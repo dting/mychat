@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
+@import url('https://fonts.googleapis.com/css?family=Mallanna');
+
+@mixin subheading-font($font-size: 14px, $font-weight: 400) {
+  font-family : 'Open Sans', sans-serif;
+  font-weight : $font-weight;
+  font-size   : $font-size;
+}
+
+@mixin heading-font($font-size: 14px, $font-weight: 700) {
+  font-family : 'Mallanna', sans-serif;
+  font-weight : $font-weight;
+  font-size   : $font-size;
+}

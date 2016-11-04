@@ -1,0 +1,69 @@
+input[type=password],
+input[type=text] {
+  margin        : 5px 0;
+  padding       : 7px 14px;
+  color         : $text-dark;
+  border        : 4px solid $border;
+  border-radius : 4px;
+  outline       : none;
+  font-size     : 14px;
+
+  &:focus {
+    border-color : $border-focus;
+  }
+}
+
+.form-group {
+  display        : flex;
+  margin         : 10px 0;
+  flex           : 1;
+  flex-direction : column;
+}
+
+.has-warning {
+  .control-label,
+  .form-control-feedback,
+  .help-block {
+    color : $warning-color-3;
+  }
+
+  .form-control {
+    border : 2px solid $warning-color-3;
+
+    &:focus {
+      border-color : $warning-color;
+    }
+  }
+}
+
+.has-error {
+  .control-label,
+  .form-control-feedback,
+  .help-block {
+    color : $danger-color-3;
+  }
+
+  .form-control {
+    border : 4px solid $danger-color-3;
+
+    &:focus {
+      border-color : $danger-color;
+    }
+  }
+}
+
+.has-success {
+  .control-label,
+  .form-control-feedback,
+  .help-block {
+    color : $accent-color-3;
+  }
+
+  .form-control {
+    border : 4px solid $accent-color-3;
+
+    &:focus {
+      border-color : $accent-color;
+    }
+  }
+}

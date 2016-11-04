@@ -1,0 +1,74 @@
+@import "./styles/reset",
+        "./styles/vendor",
+        "./styles/mixins",
+        "./styles/animations",
+        "./styles/fonts",
+        "./styles/variables",
+        "./styles/forms",
+        "./components/components",
+        "./containers/containers";
+
+* {
+  box-sizing : border-box;
+}
+
+.app,
+.chat,
+.chat_contents,
+.message_list,
+.page_container,
+body {
+  min-width  : 0;
+  min-height : 0;
+}
+
+body {
+  width            : 100vw;
+  height           : 100vh;
+  margin           : 0;
+  color            : $text-dark;
+  background-color : $body-bg;
+  font-family      : 'Avenir',
+                     'Helvetica Neue',
+                     'Helvetica',
+                     sans-serif;
+}
+
+#app {
+  width  : 100vw;
+  height : 100vh;
+}
+
+.page_container {
+  display   : flex;
+  width     : 100%;
+  height    : 100%;
+  overflow  : hidden;
+  flex-flow : column nowrap;
+}
+
+// App wide style
+
+.brand__small {
+  font-size      : 18px;
+  font-weight    : bolder;
+  letter-spacing : -1px;
+}
+
+.brand__medium {
+  font-size      : 36px;
+  font-weight    : bolder;
+  letter-spacing : -2px;
+}
+
+.link {
+  &__light {
+    color : $accent-color-1;
+  }
+
+  &_nav__rounded {
+    @include          rounded-button($primary-color-2, $text-light, $primary-color-2);
+    margin          : 5px;
+    text-decoration : none;
+  }
+}

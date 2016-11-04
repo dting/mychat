@@ -1,0 +1,14 @@
+.chat_header {
+  display       : flex;
+  min-width     : 0;
+  height        : $header-height;
+  padding       : 0 10px;
+  border-bottom : 1px solid $border;
+  line-height   : $header-height;
+
+  .room-name {
+    @include   overflow-ellipsis();
+    @include   heading-font(20px);
+    flex     : 1;
+  }
+}

@@ -1,0 +1,11 @@
+.status {
+  @include   centered(column);
+  @include   gradient-bg($base16-07, $base16-06, $base16-05);
+  color    : $text-dark;
+  flex     : 1;
+
+  &.dark {
+    @include   gradient-bg();
+    color    : $text-light;
+  }
+}

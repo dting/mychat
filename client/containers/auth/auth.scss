@@ -1,0 +1,45 @@
+.auth {
+  @include   centered(column);
+  @include   gradient-bg();
+  color    : $text-light;
+  flex     : 1;
+
+  .banner {
+    @include     centered(column);
+    margin-top : 20px;
+  }
+
+  &_form__group {
+    display        : flex;
+    margin         : 0 10px;
+    align-items    : center;
+    align-self     : stretch;
+    flex           : 1;
+    flex-direction : column;
+  }
+
+  &_form {
+    display         : flex;
+    width           : 100%;
+    max-width       : 400px;
+    flex-direction  : column;
+    justify-content : flex-end;
+
+    &__actions {
+      display        : flex;
+      align-items    : center;
+      flex-direction : column;
+    }
+
+    &__error {
+      min-height : 16px;
+      margin-top : 10px;
+      color      : $danger-color-3;
+      text-align : center;
+    }
+  }
+
+  .switch {
+    margin : 10px 0;
+  }
+}
