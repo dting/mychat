@@ -1,14 +1,14 @@
 module.exports.handleError = function handleError(res, statusCode) {
   const code = statusCode || 500;
-  return err => {
-    console.error(err);
+  return (err) => {
+    console.error(err); // eslint-disable-line no-console
     res.status(code).send(err);
     return null;
   };
 };
 
 module.exports.handleEntityNotFound = function handleEntityNotFound(res) {
-  return entity => {
+  return (entity) => {
     if (!entity) {
       res.sendStatus(404);
       return null;
@@ -19,8 +19,8 @@ module.exports.handleEntityNotFound = function handleEntityNotFound(res) {
 
 module.exports.validationError = function validationError(res, statusCode) {
   const code = statusCode || 422;
-  return err => {
-    console.error(err);
+  return (err) => {
+    console.error(err); // eslint-disable-line no-console
     let error;
     switch (err.code) {
       case 11000:
@@ -42,9 +42,9 @@ module.exports.decorateRequest = function decorateRequest(req, name, next) {
   if (!name) {
     throw Error('decorateRequest requires name argument');
   }
-  return entity => {
+  return (entity) => {
     if (entity) {
-      req[name] = entity;
+      req[name] = entity;  // eslint-disable-line no-param-reassign
       next();
     }
     return null;
@@ -53,7 +53,7 @@ module.exports.decorateRequest = function decorateRequest(req, name, next) {
 
 module.exports.respondWithResult = function respondWithResult(res, statusCode) {
   const code = statusCode || 200;
-  return entity => {
+  return (entity) => {
     if (entity) {
       return res.status(code).json(entity);
     }

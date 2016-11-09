@@ -1,5 +1,5 @@
-const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const passport = require('passport');
 
 const User = require('../../user/user.model');
 
@@ -9,14 +9,14 @@ passport.use(new LocalStrategy({
 }, (username, password, done) => {
   User.findOne({ username })
     .select('+password')
-    .then(user => {
+    .then((user) => {
       if (!user) {
         return done(null, false, {
           message: 'No user with that name... Need to sign up?',
         });
       }
       return user.authenticate(password)
-        .then(authenticated => {
+        .then((authenticated) => {
           if (!authenticated) {
             return done(null, false, {
               message: 'Wrong password... Try again!',

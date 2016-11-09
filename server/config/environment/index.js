@@ -11,6 +11,17 @@ const baseSettings = {
   },
 };
 
-const environmentSettings = require(`./${baseSettings.env}`);
+let environmentSettings;
+/* eslint-disable global-require */
+switch (baseSettings.env) {
+  case 'production':
+    environmentSettings = _.merge(baseSettings, require('./production'));
+    break;
+  case 'development':
+  default:
+    environmentSettings = _.merge(baseSettings, require('./development'));
+    break;
+}
+/* eslint-enable */
 
-module.exports = _.merge(baseSettings, environmentSettings || {});
+module.exports = environmentSettings;

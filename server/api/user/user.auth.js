@@ -5,7 +5,7 @@ const auth = {};
 
 auth.populateReqUser = function populateReqUser(req, res, next) {
   return User.findById(req.user._id, { password: false })
-    .then(user => {
+    .then((user) => {
       if (!user) {
         return res.status(401).end();
       }

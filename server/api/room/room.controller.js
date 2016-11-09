@@ -1,5 +1,5 @@
-const u = require('../../util');
 const Room = require('./room.model');
+const u = require('../../util');
 
 const controller = {};
 
@@ -19,7 +19,7 @@ controller.get = function get(req, res) {
 
 controller.create = function create(req, res) {
   const roomName = req.body.roomName;
-  const createdBy = req.user._id
+  const createdBy = req.user._id;
   return Room.create({ roomName, createdBy })
     .then(u.respondWithResult(res))
     .catch(u.validationError(res, 422));

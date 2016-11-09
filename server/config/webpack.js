@@ -8,7 +8,7 @@ const devMiddleware = webpackDevMiddleware(compiler, {
   noInfo: true,
   publicPath: webpackConfig.output.publicPath,
   stats: {
-    colors: true
+    colors: true,
   },
 });
 const hotMiddleware = webpackHotMiddleware(compiler);

@@ -15,7 +15,7 @@ const accessTokenHeader = function accessTokenHeader(req, res, next) {
 const validateJwt = expressJwt({ secret: config.secrets.session });
 
 const signToken = function signToken(id) {
-  console.log(id);
+  console.log(id); // eslint-disable-line no-console
   return jwt.sign({ _id: id }, config.secrets.session, { expiresIn: 360000 }); // 100 hrs
 };
 

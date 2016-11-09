@@ -32,7 +32,10 @@ module.exports = function configExpress(app) {
   app.use(bodyParser.json());
 
   if (app.get('env') === 'development') {
-    const { devMiddleware, hotMiddleware } = require('./webpack');
+    const {
+      devMiddleware,
+      hotMiddleware,
+    } = require('./webpack'); // eslint-disable-line global-require
     app.use(devMiddleware);
     app.use(hotMiddleware);
     app.use(errorHandler());

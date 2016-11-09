@@ -11,7 +11,9 @@
     "clean": "rimraf public",
     "build": "NODE_ENV=production webpack -p --config ./webpack.config.js --progress --profile --colors",
     "build:clean": "npm run clean && npm run build",
-    "lint:client": "eslint client"
+    "lint:client": "eslint client",
+    "lint:server": "eslint server",
+    "lint": "npm run lint:client & npm run lint:server"
   },
   "author": "Dennis Ting (dennisting@gmail.com)",
   "repository": "git@github.com:dting/mychat.git",

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const chalk = require('chalk');
 const express = require('express');
 
@@ -7,11 +8,11 @@ const db = require('./db');
 const app = express();
 config(app);
 
-const startListening = function() {
-  app.listen(app.get('port'), app.get('ip'), function() {
+const startListening = function startListening() {
+  app.listen(app.get('port'), app.get('ip'), () => {
     console.info(chalk.cyan(`Listening on port ${app.get('port')}`));
   });
-}
+};
 
 db.connect()
   .then(() => console.info(chalk.white('\nMongoose connection established...')))

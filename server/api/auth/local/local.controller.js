@@ -10,7 +10,7 @@ controller.auth = function auth(req, res, next) {
     if (error) {
       return res.status(401).json(error);
     }
-    req.user = user;
+    req.user = user;  // eslint-disable-line no-param-reassign
     return next();
   })(req, res, next);
 };
