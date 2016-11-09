@@ -10,7 +10,7 @@ import Editor from './editor/Editor';
 import Header from './header/Header';
 import MessageList from './message-list/MessageList';
 
-class Chat extends React.Component {
+class Chat extends React.PureComponent {
   static propTypes = {
     params: React.PropTypes.shape({
       roomName: React.PropTypes.string.isRequired,

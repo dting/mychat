@@ -16,7 +16,7 @@ const linkifyPlugin = createLinkifyPlugin({ target: '_blank' });
  *
  * http://stackoverflow.com/a/34345634
  */
-class MessageList extends React.Component {
+class MessageList extends React.PureComponent {
   static propTypes = {
     message: React.PropTypes.shape({
       initialized: React.PropTypes.bool,

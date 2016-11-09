@@ -9,7 +9,7 @@ const Form = t.form.Form;
 const FormSchema = t.struct({ username: t.String, password: t.String });
 const options = { fields: { password: { type: 'password' } } };
 
-class AuthForm extends React.Component {
+class AuthForm extends React.PureComponent {
   static propTypes = {
     auth: React.PropTypes.shape({
       formError: React.PropTypes.string,

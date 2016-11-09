@@ -5,7 +5,7 @@ import React from 'react';
 import { actions } from '../../modules';
 import { LoadingDots, RoundedButton, Status } from '../../components';
 
-class CreateRoom extends React.Component {
+class CreateRoom extends React.PureComponent {
   static propTypes = {
     createRoom: React.PropTypes.func.isRequired,
     creating: React.PropTypes.bool,

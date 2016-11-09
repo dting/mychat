@@ -5,7 +5,7 @@ import React from 'react';
 
 import { actions } from '../../../modules';
 
-class UserMenu extends React.Component {
+class UserMenu extends React.PureComponent {
   static propTypes = {
     logOut: React.PropTypes.func.isRequired,
     username: React.PropTypes.string.isRequired,

@@ -6,7 +6,7 @@ import { actions } from '../../modules';
 import RoomList from './room-list/RoomList';
 import UserMenu from './user-menu/UserMenu';
 
-class SideBar extends React.Component {
+class SideBar extends React.PureComponent {
   static propTypes = {
     roomListActions: React.PropTypes.shape({
       index: React.PropTypes.func.isRequired,

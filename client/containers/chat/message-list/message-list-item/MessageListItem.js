@@ -3,7 +3,7 @@ import DraftEditor from 'draft-js-plugins-editor';
 import moment from 'moment';
 import React from 'react';
 
-class MessageListItem extends React.Component {
+class MessageListItem extends React.PureComponent {
   static propTypes = {
     contents: React.PropTypes.string.isRequired,
     createdAt: React.PropTypes.string.isRequired,

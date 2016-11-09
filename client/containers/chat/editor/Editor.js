@@ -22,7 +22,7 @@ const linkifyPlugin = createLinkifyPlugin({ target: '_blank' });
 const plugins = [emojiPlugin, linkifyPlugin];
 const { EmojiSuggestions } = emojiPlugin;
 
-class Editor extends React.Component {
+class Editor extends React.PureComponent {
   static propTypes = {
     editorState: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
     onChange: React.PropTypes.func.isRequired,
