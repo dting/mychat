@@ -18,7 +18,7 @@ UserSchema
   .path('username')
   .validate(function usernameAvailable(value, respond) {
     return this.constructor.findOne({ username: value }).exec()
-      .then(user => {
+      .then((user) => {
         if (user) {
           if (this.id === user.id) {
             return respond(true);

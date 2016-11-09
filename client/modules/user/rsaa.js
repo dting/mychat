@@ -16,5 +16,5 @@ export default {
         types: [types.ME_REQUEST, types.ME_SUCCESS, types.ME_FAILURE],
       },
     };
-  }
-}
+  },
+};

@@ -1,7 +1,6 @@
 import { withToken } from '../rsaa-helpers';
 import draftHelpers from './draft-helpers';
 import rsaas from './rsaa';
-import types from './constants';
 
 /**
  * Sends RSAA with current jwt token, roomName, and args
@@ -12,7 +11,15 @@ const withRoomName = function withRoomName(rsaa, ...args) {
     if (roomName) {
       return withToken(rsaa, roomName, ...args)(dispatch, getState);
     }
+    return undefined;
   };
+};
+
+/**
+ * Gets messages for current room
+ */
+const get = function get() {
+  return withRoomName(rsaas.get);
 };
 
 /**
@@ -26,14 +33,8 @@ const create = function create() {
       return withRoomName(rsaas.create, contents)(dispatch, getState)
         .then(action => !action.error, dispatch(get()));
     }
+    return undefined;
   };
-};
-
-/**
- * Gets messages for current room
- */
-const get = function get() {
-  return withRoomName(rsaas.get);
 };
 
 export default {

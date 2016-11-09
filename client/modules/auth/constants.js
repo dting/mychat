@@ -7,4 +7,4 @@ export default {
   FORM_ON_CHANGE: 'auth/FORM_ON_CHANGE',
   LOG_OUT: 'auth/LOG_OUT',
   ...rsaaTypes,
-}
+};

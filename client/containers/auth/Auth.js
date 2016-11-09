@@ -2,7 +2,7 @@ import React from 'react';
 
 import AuthForm from './AuthForm';
 
-export default ({ children }) => (
+const Auth = ({ children }) => (
   <div className="auth">
     <div className="banner">
       <div className="brand__medium">MyChat</div>
@@ -15,3 +15,9 @@ export default ({ children }) => (
     </div>
   </div>
 );
+
+Auth.propTypes = {
+  children: React.PropTypes.node,
+};
+
+export default Auth;

@@ -16,7 +16,7 @@ export const rsaaActionTypes = function rsaaActionTypes(prefixes, domain) {
   prefixes.forEach(prefix => Object.assign(
     types,
     ...SUFFIXES.map(suffix => `${prefix}_${suffix}`)
-      .map(type => ({[type]: `${domain}/${type}`}))));
+      .map(type => ({ [type]: `${domain}/${type}` }))));
   return types;
 };
 

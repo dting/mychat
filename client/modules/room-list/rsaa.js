@@ -6,7 +6,7 @@ export default {
   index(token) {
     return {
       [CALL_API]: {
-        endpoint: `/api/rooms`,
+        endpoint: '/api/rooms',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -16,5 +16,5 @@ export default {
         types: [types.INDEX_REQUEST, types.INDEX_SUCCESS, types.INDEX_FAILURE],
       },
     };
-  }
-}
+  },
+};

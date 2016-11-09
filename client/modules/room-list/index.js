@@ -31,13 +31,14 @@ export default function reducer(state = initialState, action = {}) {
         loading: false,
         error: 'Failed to retrieve room list...',
       };
-    case types.INDEX_SUCCESS:
+    case types.INDEX_SUCCESS: {
       const rooms = action.payload.sort(roomNameComparator);
       return {
         ...state,
         loading: false,
         rooms,
       };
+    }
     default:
       return state;
   }

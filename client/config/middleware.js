@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 
-const devTools = function() {
+const devTools = function devTools() {
   if (process.env.NODE_ENV === 'development' && window.devToolsExtension) {
     return window.devToolsExtension();
   }

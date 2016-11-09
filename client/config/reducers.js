@@ -8,7 +8,7 @@ import {
   room,
   roomList,
   token,
-  user
+  user,
 } from '../modules';
 
 export default combineReducers({

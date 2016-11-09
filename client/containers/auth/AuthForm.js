@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import React, { Component } from 'react';
-import t from 'tcomb-form'
+import React from 'react';
+import t from 'tcomb-form';
 
 import { actions } from '../../modules';
 
@@ -9,7 +9,18 @@ const Form = t.form.Form;
 const FormSchema = t.struct({ username: t.String, password: t.String });
 const options = { fields: { password: { type: 'password' } } };
 
-class AuthForm extends Component {
+class AuthForm extends React.Component {
+  static propTypes = {
+    auth: React.PropTypes.shape({
+      formError: React.PropTypes.string,
+      formValue: React.PropTypes.string,
+    }).isRequired,
+    authActions: React.PropTypes.shape({
+      clear: React.PropTypes.func.isRequired,
+      formOnChange: React.PropTypes.func.isRequired,
+    }).isRequired,
+  };
+
   componentWillMount() {
     this.onChange = this.onChange.bind(this);
   }
@@ -33,7 +44,7 @@ class AuthForm extends Component {
           {this.props.auth.formError}
         </div>
         <Form
-          ref={c => this.form = c}
+          ref={c => (this.form = c)}
           type={FormSchema}
           options={options}
           value={this.props.auth.formValue}

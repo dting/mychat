@@ -14,7 +14,7 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         initialized: true,
-      }
+      };
     case types.CREATE_REQUEST:
       return {
         ...state,

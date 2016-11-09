@@ -1,15 +1,14 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
 import createLinkifyPlugin from 'draft-js-linkify-plugin';
 import DraftEditor from 'draft-js-plugins-editor';
-import React, { Component } from 'react';
+import React from 'react';
 
 import { actions } from '../../../modules';
 import { RoundedButton } from '../../../components';
 
-const positionSuggestions = function() {
+const positionSuggestions = function positionSuggestions() {
   return {
     bottom: 0,
     left: '-220px',
@@ -19,11 +18,18 @@ const positionSuggestions = function() {
   };
 };
 const emojiPlugin = createEmojiPlugin({ positionSuggestions });
-const linkifyPlugin = createLinkifyPlugin({ target: "_blank" });
+const linkifyPlugin = createLinkifyPlugin({ target: '_blank' });
 const plugins = [emojiPlugin, linkifyPlugin];
 const { EmojiSuggestions } = emojiPlugin;
 
-class Editor extends Component {
+class Editor extends React.Component {
+  static propTypes = {
+    editorState: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+    onChange: React.PropTypes.func.isRequired,
+    sending: React.PropTypes.bool,
+    sendMessage: React.PropTypes.func.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.onChange = this.onChange.bind(this);
@@ -35,7 +41,7 @@ class Editor extends Component {
   }
 
   render() {
-    const { editorState, sending } = this.props;
+    const { editorState, sending, sendMessage } = this.props;
     return (
       <div className="chat_editor">
         <DraftEditor
@@ -44,7 +50,7 @@ class Editor extends Component {
           plugins={plugins}
         />
         <EmojiSuggestions />
-        <RoundedButton onClick={this.props.sendMessage} dark disabled={sending}>
+        <RoundedButton onClick={sendMessage} dark disabled={sending}>
           Send
         </RoundedButton>
       </div>

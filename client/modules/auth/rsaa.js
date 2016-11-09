@@ -6,7 +6,7 @@ export default {
   logIn(credentials) {
     return {
       [CALL_API]: {
-        endpoint: `/api/auth/local`,
+        endpoint: '/api/auth/local',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         types: [
@@ -21,7 +21,7 @@ export default {
   signUp(credentials) {
     return {
       [CALL_API]: {
-        endpoint: `/api/users`,
+        endpoint: '/api/users',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         types: [
@@ -33,4 +33,4 @@ export default {
       },
     };
   },
-}
+};

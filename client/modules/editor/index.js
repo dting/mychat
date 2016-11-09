@@ -20,7 +20,7 @@ export default function reducer(state = initialState, action = {}) {
         editorState: EditorState.push(
           state.editorState,
           ContentState.createFromText(''),
-          'change-block-data'
+          'change-block-data',
         ),
       };
     default:

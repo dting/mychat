@@ -20,12 +20,12 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         loading: true,
       };
-    case types.LOG_IN_FAILURE:
+    case types.LOG_IN_FAILURE: {
       let logInError = 'Log in failed... Try again!';
       try {
         logInError = action.payload.response.message || logInError;
       } catch (e) {
-        console.log(e);
+        console.log(e); // eslint-disable-line no-console
         if (!(e instanceof TypeError)) throw e;
       }
       return {
@@ -33,7 +33,8 @@ export default function reducer(state = initialState, action = {}) {
         loading: false,
         formError: logInError,
       };
-    case types.SIGN_UP_FAILURE:
+    }
+    case types.SIGN_UP_FAILURE: {
       let signUpError = 'Sign up failed... Try again!';
       try {
         const { payload: { response: { errors } } } = action;
@@ -46,6 +47,7 @@ export default function reducer(state = initialState, action = {}) {
         loading: false,
         formError: signUpError,
       };
+    }
     case '@@router/LOCATION_CHANGE':
       return {
         ...state,

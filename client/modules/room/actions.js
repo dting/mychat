@@ -2,7 +2,6 @@ import { replace } from 'react-router-redux';
 
 import { withToken } from '../rsaa-helpers';
 import rsaas from './rsaa';
-import types from './constants';
 
 /**
  * Gets a specific room by roomName.
@@ -11,13 +10,13 @@ import types from './constants';
  */
 const get = function get(roomName) {
   return (dispatch, getState) => withToken(rsaas.get, roomName)(dispatch, getState)
-    .then(action => {
+    .then((action) => {
       if (action.error && action.payload.status === 404) {
         return dispatch(replace(`/r/${roomName}/create`));
       }
       return action;
     })
-    .catch(console.error);
+    .catch(console.error); // eslint-disable-line no-console
 };
 
 /**
@@ -27,13 +26,13 @@ const get = function get(roomName) {
  */
 const create = function create(roomName) {
   return (dispatch, getState) => withToken(rsaas.create, roomName)(dispatch, getState)
-    .then(action => {
+    .then((action) => {
       if (!action.error || action.payload.response.code === 11000) {
         return dispatch(replace(`/r/${roomName}/`));
       }
       return action;
     })
-    .catch(console.error);
+    .catch(console.error); // eslint-disable-line no-console
 };
 
 export default {

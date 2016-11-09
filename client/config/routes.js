@@ -1,9 +1,8 @@
 import { Route, IndexRedirect, IndexRoute, Redirect } from 'react-router';
-import { Link } from 'react-router';
 import React from 'react';
 
 import { App, Chat, CreateRoom, LogIn, SignUp } from '../containers';
-import { Home, NotFound, Status } from '../components';
+import { Home, NotFound } from '../components';
 import Root from '../Root';
 
 const routes = (

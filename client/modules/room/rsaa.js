@@ -16,7 +16,7 @@ export default {
         types: [
           types.GET_REQUEST,
           types.GET_SUCCESS,
-          types.GET_FAILURE
+          types.GET_FAILURE,
         ],
       },
     };
@@ -34,10 +34,10 @@ export default {
         types: [
           types.CREATE_REQUEST,
           types.CREATE_SUCCESS,
-          types.CREATE_FAILURE
+          types.CREATE_FAILURE,
         ],
         body: JSON.stringify({ roomName }),
       },
     };
   },
-}
+};

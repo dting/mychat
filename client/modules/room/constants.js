@@ -4,4 +4,4 @@ const rsaaTypes = rsaaActionTypes(['CREATE', 'GET'], 'room');
 
 export default {
   ...rsaaTypes,
-}
+};

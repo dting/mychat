@@ -1,6 +1,5 @@
 import { replace } from 'react-router-redux';
 
-import { actions } from '../';
 import rsaas from './rsaa';
 import types from './constants';
 
@@ -30,8 +29,9 @@ const withCredentials = function withCredentials(rsaa) {
     if (auth.credentials) {
       return dispatch(rsaa(auth.credentials))
         .then(action => !action.error && dispatch(replace('/r/')))
-        .catch(console.error);
+        .catch(console.error); // eslint-disable-line no-console
     }
+    return undefined;
   };
 };
 

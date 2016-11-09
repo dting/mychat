@@ -2,13 +2,13 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
 import createLinkifyPlugin from 'draft-js-linkify-plugin';
-import React, { Component } from 'react';
+import React from 'react';
 
 import { actions } from '../../../modules';
 import MessageListItem from './message-list-item/MessageListItem';
 
 const emojiPlugin = createEmojiPlugin();
-const linkifyPlugin = createLinkifyPlugin({ target: "_blank" });
+const linkifyPlugin = createLinkifyPlugin({ target: '_blank' });
 
 /**
  * Firefox and Chrome have flexbox implementations that are at odds in regard
@@ -16,10 +16,40 @@ const linkifyPlugin = createLinkifyPlugin({ target: "_blank" });
  *
  * http://stackoverflow.com/a/34345634
  */
-class MessageList extends Component {
+class MessageList extends React.Component {
+  static propTypes = {
+    message: React.PropTypes.shape({
+      initialized: React.PropTypes.bool,
+      messages: React.PropTypes.arrayOf(React.PropTypes.shape({
+        _id: React.PropTypes.string.isRequired,
+      })).isRequired,
+    }),
+    messageActions: React.PropTypes.shape({
+      get: React.PropTypes.func.isRequired,
+    }),
+    roomName: React.PropTypes.string.isRequired,
+  };
+
+  /**
+   * Reverses the scroll direction because the message area is actually flipped upside down
+   */
+  static onScroll(e) {
+    if (e.deltaY) {
+      e.preventDefault();
+      const size = parseFloat(window.getComputedStyle(e.currentTarget).getPropertyValue('font-size'));
+      /* eslint-disable no-param-reassign */
+      e.currentTarget.scrollTop -= size * (e.deltaY < 0 ? -1 : 1) * 2.5;
+      /* eslint-enable */
+    }
+  }
+
   componentWillMount() {
     this.checkMessages();
-    this.poller = setInterval(() => this.checkMessages() , 1500);
+    this.poller = setInterval(() => this.checkMessages(), 1500);
+  }
+
+  componentDidMount() {
+    document.querySelector('.scroll-wrapper').addEventListener('wheel', MessageList.onScroll);
   }
 
   componentDidUpdate() {
@@ -27,10 +57,6 @@ class MessageList extends Component {
     if (!this.props.message.initialized) {
       this.checkMessages();
     }
-  }
-
-  componentDidMount() {
-    document.querySelector('.scroll-wrapper').addEventListener('wheel', this.onScroll);
   }
 
   componentWillUnmount() {
@@ -42,17 +68,6 @@ class MessageList extends Component {
     return this.props.messageActions.get(this.props.roomName);
   }
 
-  /**
-   * Reverses the scroll direction because the message area is actually flipped upside down
-   */
-  onScroll(evt) {
-    if(evt.deltaY) {
-      evt.preventDefault();
-      const fontSize = parseFloat(getComputedStyle(evt.currentTarget).getPropertyValue('font-size'));
-      evt.currentTarget.scrollTop -= fontSize * (evt.deltaY < 0 ? -1 : 1) * 2.5;
-    }
-  }
-
   render() {
     const { messages } = this.props.message;
     return (
@@ -60,7 +75,8 @@ class MessageList extends Component {
         <div className="scroll-wrapper">
           <div className="messages">
             {messages && messages.map(message => (
-              <MessageListItem  key={message._id}
+              <MessageListItem
+                key={message._id}
                 {...message}
                 emojiPlugin={emojiPlugin}
                 linkifyPlugin={linkifyPlugin}

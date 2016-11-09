@@ -18,7 +18,7 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         loading: null,
-        ...action.payload
+        ...action.payload,
       };
     case authTypes.LOG_OUT:
     case types.ME_FAILURE:

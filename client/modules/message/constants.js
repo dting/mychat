@@ -4,4 +4,4 @@ const rsaaTypes = rsaaActionTypes(['CREATE', 'GET'], 'messages');
 
 export default {
   ...rsaaTypes,
-}
+};

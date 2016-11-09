@@ -1,12 +1,24 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { replace } from 'react-router-redux';
-import React, { Component } from 'react';
+import React from 'react';
 
 import { LoadingDots, Status } from '../../components';
 import { actions } from '../../modules';
 
-class App extends Component {
+class App extends React.Component {
+  static propTypes = {
+    children: React.PropTypes.node,
+    token: React.PropTypes.string.isRequired,
+    user: React.PropTypes.shape({
+      loading: React.PropTypes.bool,
+    }).isRequired,
+    userActions: React.PropTypes.shape({
+      me: React.PropTypes.func.isRequired,
+    }).isRequired,
+    replace: React.PropTypes.func.isRequired,
+  };
+
   componentWillMount() {
     if (this.props.token) {
       this.props.userActions.me();

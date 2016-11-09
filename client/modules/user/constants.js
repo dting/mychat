@@ -4,4 +4,4 @@ const rsaaTypes = rsaaActionTypes(['ME'], 'user');
 
 export default {
   ...rsaaTypes,
-}
+};

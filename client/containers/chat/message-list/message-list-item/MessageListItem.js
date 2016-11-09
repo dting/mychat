@@ -1,9 +1,19 @@
-import moment from 'moment';
-import React, { Component } from 'react';
 import { convertFromRaw, EditorState } from 'draft-js';
 import DraftEditor from 'draft-js-plugins-editor';
+import moment from 'moment';
+import React from 'react';
 
-class MessageListItem extends Component {
+class MessageListItem extends React.Component {
+  static propTypes = {
+    contents: React.PropTypes.string.isRequired,
+    createdAt: React.PropTypes.string.isRequired,
+    createdBy: React.PropTypes.shape({
+      username: React.PropTypes.string.isRequired,
+    }).isRequired,
+    emojiPlugin: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+    linkifyPlugin: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  };
+
   componentWillMount() {
     const rawContents = convertFromRaw(JSON.parse(this.props.contents));
     this.state = {
@@ -17,7 +27,7 @@ class MessageListItem extends Component {
   }
 
   render() {
-    const { contents, createdAt, createdBy, emojiPlugin, linkifyPlugin } = this.props;
+    const { createdAt, createdBy, emojiPlugin, linkifyPlugin } = this.props;
     return (
       <div className="message">
         <div className="message_meta__author">@{createdBy.username}</div>

@@ -1,7 +1,13 @@
 import React from 'react';
 
-export default ({ roomName }) => (
+const Header = ({ roomName }) => (
   <div className="chat_header">
     <h1 className="room-name">{`#${roomName}`}</h1>
   </div>
 );
+
+Header.propTypes = {
+  roomName: React.PropTypes.string.isRequired,
+};
+
+export default Header;

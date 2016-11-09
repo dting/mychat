@@ -1,11 +1,20 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import React, { Component } from 'react';
+import React from 'react';
 
 import { actions } from '../../modules';
 import { LoadingDots, RoundedButton, Status } from '../../components';
 
-class CreateRoom extends Component {
+class CreateRoom extends React.Component {
+  static propTypes = {
+    createRoom: React.PropTypes.func.isRequired,
+    creating: React.PropTypes.bool,
+    error: React.PropTypes.string,
+    params: React.PropTypes.shape({
+      roomName: React.PropTypes.string,
+    }).isRequired,
+  };
+
   componentWillMount() {
     this.onChange = this.onChange.bind(this);
     this.state = {
@@ -15,17 +24,18 @@ class CreateRoom extends Component {
   }
 
   onChange(evt) {
-    this.setState({ roomName: evt.target.value })
+    this.setState({ roomName: evt.target.value });
   }
 
   render() {
-    const { error, params, creating, createRoom } = this.props;
+    const { error, creating, createRoom } = this.props;
     return (
       <Status className="chat_create fade-in">
         {error && <p>{error}</p>}
         {!error && <p>Create Room?</p>}
         <div className="chat_create__input">
-          <input type="text"
+          <input
+            type="text"
             value={this.state.roomName}
             onChange={this.onChange}
             disabled={this.state.disabled || this.state.creating}

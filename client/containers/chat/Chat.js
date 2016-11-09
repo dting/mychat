@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import React, { Component } from 'react';
+import React from 'react';
 
 import { actions } from '../../modules';
 import { LoadingDots } from '../../components';
@@ -10,9 +10,22 @@ import Editor from './editor/Editor';
 import Header from './header/Header';
 import MessageList from './message-list/MessageList';
 
-class Chat extends Component {
+class Chat extends React.Component {
+  static propTypes = {
+    params: React.PropTypes.shape({
+      roomName: React.PropTypes.string.isRequired,
+    }),
+    room: React.PropTypes.shape({
+      checked: React.PropTypes.bool,
+      checking: React.PropTypes.bool,
+    }),
+    roomActions: React.PropTypes.shape({
+      get: React.PropTypes.func.isRequired,
+    }),
+  };
+
   componentWillMount() {
-    return this.props.roomActions.get(this.props.params.roomName);
+    this.props.roomActions.get(this.props.params.roomName);
   }
 
   componentDidUpdate() {
@@ -26,35 +39,27 @@ class Chat extends Component {
     }
   }
 
-  renderLoading() {
-    return (
-      <div className="chat_contents__loading">
-        <div className="loading_status">
-          {`Loading #${this.props.params.roomName}`}
-        </div>
-        <LoadingDots />
-      </div>
-    );
-  }
-
-  renderChatRoom() {
-    return (
-      <div className="chat_contents fade-in">
-        <MessageList roomName={this.props.params.roomName} />
-        <Editor />
-      </div>
-    )
-  }
-
   render() {
-    const { checking, checked } = this.props.room;
+    const { room: { checking, checked }, params } = this.props;
     return (
       <div className="chat fade-in">
         <SideBar />
         <div className="chat_main">
-          <Header roomName={this.props.params.roomName} />
-          {checking && this.renderLoading()}
-          {checked && this.renderChatRoom()}
+          <Header roomName={params.roomName} />
+          {checking &&
+            <div className="chat_contents__loading">
+              <div className="loading_status">
+                {`Loading #${params.roomName}`}
+              </div>
+              <LoadingDots />
+            </div>
+          }
+          {checked &&
+            <div className="chat_contents fade-in">
+              <MessageList roomName={params.roomName} />
+              <Editor />
+            </div>
+          }
         </div>
       </div>
     );

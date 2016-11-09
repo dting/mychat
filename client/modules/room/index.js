@@ -15,13 +15,14 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         creating: true,
       };
-    case types.CREATE_FAILURE:
+    case types.CREATE_FAILURE: {
       const error = 'Something went wrong... Try again?';
       return {
         ...state,
         creating: null,
         error,
       };
+    }
     case types.CREATE_SUCCESS:
       return {
         ...state,

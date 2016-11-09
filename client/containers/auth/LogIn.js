@@ -18,6 +18,10 @@ const LogIn = ({ logIn }) => (
   </Auth>
 );
 
+LogIn.propTypes = {
+  logIn: React.PropTypes.func.isRequired,
+};
+
 const mapDispatchToProps = dispatch => ({
   logIn: bindActionCreators(actions.auth.logIn, dispatch),
 });
