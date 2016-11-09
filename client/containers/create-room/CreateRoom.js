@@ -15,12 +15,13 @@ class CreateRoom extends React.Component {
     }).isRequired,
   };
 
-  componentWillMount() {
-    this.onChange = this.onChange.bind(this);
+  constructor(props) {
+    super(props);
     this.state = {
       roomName: this.props.params.roomName,
       disabled: !!this.props.params.roomName,
     };
+    this.onChange = this.onChange.bind(this);
   }
 
   onChange(evt) {

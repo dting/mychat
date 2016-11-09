@@ -14,7 +14,8 @@ class MessageListItem extends React.Component {
     linkifyPlugin: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   };
 
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     const rawContents = convertFromRaw(JSON.parse(this.props.contents));
     this.state = {
       editorState: EditorState.createWithContent(rawContents),

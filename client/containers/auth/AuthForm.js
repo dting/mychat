@@ -21,7 +21,8 @@ class AuthForm extends React.Component {
     }).isRequired,
   };
 
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     this.onChange = this.onChange.bind(this);
   }
 
