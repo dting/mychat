@@ -6,7 +6,7 @@ const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
 
-const paths = require('../../client/config/paths');
+const paths = require('../../config/paths');
 const config = require('./environment');
 
 module.exports = function configExpress(app) {

@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const webpack = require('webpack');
 
-const paths = require('../client/config/paths');
+const paths = require('./paths');
 
 module.exports = {
   entry: {
@@ -20,7 +20,7 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings: false
+        warnings: false,
       },
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
