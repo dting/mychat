@@ -22,6 +22,8 @@ SignUp.propTypes = {
   signUp: React.PropTypes.func.isRequired,
 };
 
+SignUp.displayName = 'SignUp';
+
 const mapDispatchToProps = dispatch => ({
   signUp: bindActionCreators(actions.auth.signUp, dispatch),
 });

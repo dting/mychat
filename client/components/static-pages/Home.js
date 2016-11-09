@@ -2,7 +2,7 @@ import React from 'react';
 
 import { NavLink, Status } from '../';
 
-export default () => (
+const Home = () => (
   <Status className="home">
     <div className="brand__medium">MyChat</div>
     <div className="info">
@@ -15,3 +15,7 @@ export default () => (
     </div>
   </Status>
 );
+
+Home.displayName = 'Home';
+
+export default Home;

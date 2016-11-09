@@ -20,4 +20,6 @@ Auth.propTypes = {
   children: React.PropTypes.node,
 };
 
+Auth.displayName = 'Auth';
+
 export default Auth;

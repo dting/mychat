@@ -12,4 +12,6 @@ Root.propTypes = {
   children: React.PropTypes.node,
 };
 
+Root.displayName = 'Root';
+
 export default Root;

@@ -14,4 +14,6 @@ Status.propTypes = {
   dark: React.PropTypes.bool,
 };
 
+Status.displayName = 'Status';
+
 export default Status;

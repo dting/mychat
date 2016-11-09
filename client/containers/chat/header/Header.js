@@ -10,4 +10,6 @@ Header.propTypes = {
   roomName: React.PropTypes.string.isRequired,
 };
 
+Header.displayName = 'Header';
+
 export default Header;

@@ -22,6 +22,8 @@ LogIn.propTypes = {
   logIn: React.PropTypes.func.isRequired,
 };
 
+LogIn.displayName = 'LogIn';
+
 const mapDispatchToProps = dispatch => ({
   logIn: bindActionCreators(actions.auth.logIn, dispatch),
 });

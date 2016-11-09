@@ -24,4 +24,6 @@ RoomList.propTypes = {
   }).isRequired,
 };
 
+RoomList.displayName = 'RoomList';
+
 export default RoomList;

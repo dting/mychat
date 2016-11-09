@@ -18,4 +18,6 @@ RoundedButton.propTypes = {
   onClick: React.PropTypes.func,
 };
 
+RoundedButton.displayName = 'RoundedButton';
+
 export default RoundedButton;

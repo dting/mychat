@@ -24,6 +24,8 @@ NavLink.propTypes = {
   children: React.PropTypes.node,
 };
 
+NavLink.displayName = 'NavLink';
+
 export default connect(
   (state, ownProps) => ({
     ...ownProps,
