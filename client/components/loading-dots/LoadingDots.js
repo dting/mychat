@@ -1,9 +1,13 @@
 import React from 'react';
 
-export default () => (
+const LoadingDots = () => (
   <div className="loading">
     <div className="dot left" />
     <div className="dot center" />
     <div className="dot right" />
   </div>
 );
+
+LoadingDots.displayName = 'LoadingDots';
+
+export default LoadingDots;
